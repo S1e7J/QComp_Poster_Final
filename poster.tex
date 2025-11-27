@@ -141,14 +141,14 @@
 
           \heading{Cota de Hamming}
 
-          Sea $C$ un codigo que codifica $k$ qubits en $n$ qubits y que puede corregir cualquier subconjunto de $t$ errores. Particularmente, asuma sin perdida de generalidad que corrige $j \le t$ errores. Entonces se cumple la cota [1]
+          Sea $C$ un codigo que codifica $k$ qubits en $n$ qubits y que puede corregir cualquier subconjunto de $t$ errores. Particularmente, asuma sin perdida de generalidad que corrige $j \le t$ errores. Entonces se cumple la cota
           \begin{equation}
             \sum_{j = 0}^{t} \binom{n}{j} 3^j 2^k \le 2^n
             \label{eq:hamming_bound}
           \end{equation}
 
           \heading{Estabilizadores}
-          Las bases del formalismo de estabilizadores consiste en mirar un estado no desde sus caracteristicas si no desde los operadores que lo estabilizan. Un operador se dice que estabiliza a un estado si el estado es un eigenvector con eigenvalue $+1$. Es decir, $S$ estabiliza $\ket{\psi}$ si $s\ket{\psi} = \ket{\psi}$[1].
+          Las bases del formalismo de estabilizadores consiste en mirar un estado no desde sus caracteristicas si no desde los operadores que lo estabilizan. Un operador se dice que estabiliza a un estado si el estado es un eigenvector con eigenvalue $+1$. Es decir, $S$ estabiliza $\ket{\psi}$ si $s\ket{\psi} = \ket{\psi}$.
 
           Una de las caracteristicas mas importantes es que al definir de esta manera un estado estamos construyendo grupos y por tanto podemos usar teoria de grupos para realizar las interpretaciones de los diversos codigos. Esto es parte de lo que hace tan increiblemente fuerte el formalismo de estabilizadores y lo que nos va a permitir hablar de los siguientes codigos que usan este formalismo.
         \end{block}
