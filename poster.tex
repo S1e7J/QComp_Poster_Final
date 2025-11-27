@@ -11,7 +11,7 @@
 
 \usepackage[T1]{fontenc}
 \usepackage{lmodern}
-\usepackage[orientation=portrait,size=a0,scale=1.0]{beamerposter}
+\usepackage[orientation=portrait,size=a0,scale=1.17]{beamerposter}
 \usetheme{gemini}
 \usecolortheme{nott}
 \usepackage{graphicx}
@@ -88,22 +88,29 @@
       \begin{column}{\colwidth}
 
         \begin{block}{Introducción}
+          La computación cuántica enfrenta un reto fundamental con los qubits físicos, pues son extremadamente sensibles al ruido y al entorno (por su naturaleza cuántica), lo que genera errores incluso antes de realizar operaciones lógicas. Así mismo, el teorema de no clonación impide aplicar estrategias clásicas de correción de errores sobre los qubits. 
+          Es de esta manera, que Shor (1995) y Calderbank–Shor–Steane (1996) introdujeron los primeros códigos de corrección cuántica, basados en distribuir la información de un qubit en varios qubits físicos y detectar qué error ocurrió sin medir directamente el estado lógico.
 
-          Some block contents, followed by a diagram, followed by a dummy paragraph.
+          En este trabajo se resumirán los elementos básicos de la corrección cuántica: ejemplos simples,
+          fundamentos matemáticos y códigos estabilizadores como los de Shor y CSS.
+        \end{block}
 
-          \begin{figure} \centering
-            \begin{tikzpicture}[scale=6]
-              \draw[step=0.25cm,color=gray] (-1,-1) grid (1,1);
-              \draw (1,0) -- (0.2,0.2) -- (0,1) -- (-0.2,0.2) -- (-1,0)
-              -- (-0.2,-0.2) -- (0,-1) -- (0.2,-0.2) -- cycle;
-            \end{tikzpicture} \caption{A figure caption.}
-          \end{figure}
+        \begin{block}{Ejemplo: Phase Flip}
 
-          Lorem ipsum dolor sit amet, consectetur adipiscing elit. Morbi ultricies
-          eget libero ac ullamcorper. Integer et euismod ante. Aenean vestibulum
-          lobortis augue, ut lobortis turpis rhoncus sed. Proin feugiat nibh a
-          lacinia dignissim. Proin scelerisque, risus eget tempor fermentum, ex
-          turpis condimentum urna, quis malesuada sapien arcu eu purus.
+          El canal de \textit{phase flip} consiste en invertir la fase del qubit con una probabilidad $p$ de que ocurra. Para corregirlo, se propone un código de tres qubits con estados lógicos
+
+          \[
+            |0_L\rangle = |000\rangle , \qquad |1_L\rangle = |111\rangle .
+          \]
+
+          Si un error ocurre en uno de los tres qubits, medimos operadores que identifican cuál fue afectado sin destruir la información lógica. Esto permite aplicar $X$ en el qubit correcto para recuperar el estado original, lo cual se consigue con operadores estabilizadores:
+
+          \begin{align*}
+            P_{0} &\equiv \ket{000}\bra{000} + \ket{111}\bra{111},\\
+            P_{1} &\equiv \ket{100}\bra{100} + \ket{011}\bra{011},\\
+            P_{2} &\equiv \ket{010}\bra{010} + \ket{101}\bra{101},\\
+            P_{3} &\equiv \ket{001}\bra{001} + \ket{110}\bra{110}.
+          \end{align*}
 
         \end{block}
 
@@ -165,18 +172,18 @@
 
           \begin{center}
             \scalebox{1.5}{
-            \begin{quantikz}[row sep=1cm, column sep=1cm]
-              \lstick{$\ket{\psi}$} & \ctrl{3} & \ctrl{6} & \gate{H} & \qw & \ctrl{1} & \ctrl{2} & \qw \\
-              &&&& \lstick{$\ket{0}$} & \targ{} & \qw & \qw \\
-              &&&& \lstick{$\ket{0}$} & \qw & \targ{} & \qw \\
-              \lstick{$\ket{0}$} & \targ{} & \qw & \gate{H}& \qw & \ctrl{1} & \ctrl{2} & \qw\\
-              &&&& \lstick{$\ket{0}$} & \targ{} & \qw & \qw \\
-              &&&& \lstick{$\ket{0}$} & \qw & \targ{} & \qw \\
-              \lstick{$\ket{0}$} & \qw & \targ{} & \gate{H} & \qw & \ctrl{1} & \ctrl{2} & \qw\\
-              &&&& \lstick{$\ket{0}$} & \targ{} & \qw & \qw \\
-              &&&& \lstick{$\ket{0}$} & \qw & \targ{} & \qw
-            \end{quantikz}
-          }
+              \begin{quantikz}[row sep=1cm, column sep=1cm]
+                \lstick{$\ket{\psi}$} & \ctrl{3} & \ctrl{6} & \gate{H} & \qw & \ctrl{1} & \ctrl{2} & \qw \\
+                &&&& \lstick{$\ket{0}$} & \targ{} & \qw & \qw \\
+                &&&& \lstick{$\ket{0}$} & \qw & \targ{} & \qw \\
+                \lstick{$\ket{0}$} & \targ{} & \qw & \gate{H}& \qw & \ctrl{1} & \ctrl{2} & \qw\\
+                &&&& \lstick{$\ket{0}$} & \targ{} & \qw & \qw \\
+                &&&& \lstick{$\ket{0}$} & \qw & \targ{} & \qw \\
+                \lstick{$\ket{0}$} & \qw & \targ{} & \gate{H} & \qw & \ctrl{1} & \ctrl{2} & \qw\\
+                &&&& \lstick{$\ket{0}$} & \targ{} & \qw & \qw \\
+                &&&& \lstick{$\ket{0}$} & \qw & \targ{} & \qw
+              \end{quantikz}
+            }
           \end{center}
 
           \heading{¿Por que puede corregir errores arbitrarios?}
