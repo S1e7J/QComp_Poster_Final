@@ -129,6 +129,14 @@
 
           Una nota importante que ver es que el $\propto$ nos representa que realmente la operación de recuperación no nos devuelve exactamente al qubit original. Sin embargo, si nos debe devolver a un qubit que codifique la misma información que el anterior.
 
+          \heading{Fidelidad}
+          Sea $\rho$ la acción de un canal; entonces, la fidelidad se define como
+          \begin{equation}
+            F = \sqrt{\bra{\psi} \rho \ket{\psi}},
+            \label{eq:fidelidad}
+          \end{equation}
+          donde $\ket{\psi}$ es el estado de interés (normalmente, el estado inicial).
+
           \heading{Condiciones para que un Codigo Corriga un error}
 
           Sea $C$ un codigo y $P$ el proyector a $C$. Suponga que $\mathcal{E}$ es una operación cuantica con elementos $\left\{E_i \right\}$. Una condición necesaria y suficiente para que exista una operación $\mathcal{R}$ que corrija $\mathcal{E}$ en $C$ es
